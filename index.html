@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayo Belajar Bola Basket! - PJOK SLB Fase D</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter & Font Dyslexic / Friendly -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f0fdf4;
+            user-select: none;
+        }
+        h1, h2, h3, .font-heading {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .text-speech {
+            line-height: 1.6;
+        }
+        /* Custom Button Animation & Touch Friendly Target */
+        .btn-large {
+            min-height: 60px;
+            min-width: 60px;
+            touch-action: manipulation;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .btn-large:active {
+            transform: scale(0.95);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        /* Mode Aksesibilitas Kontras Tinggi */
+        .high-contrast {
+            background-color: #000000 !important;
+            color: #FFFF00 !important;
+        }
+        .high-contrast .bg-white, 
+        .high-contrast .bg-orange-100, 
+        .high-contrast .bg-emerald-100,
+        .high-contrast .bg-blue-100 {
+            background-color: #111111 !important;
+            color: #FFFFFF !important;
+            border: 2px solid #FFFF00 !important;
+        }
+        .high-contrast button {
+            background-color: #FFFF00 !important;
+            color: #000000 !important;
+            font-weight: bold !important;
+        }
+    </style>
+</head>
+<body class="bg-amber-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER / NAVIGASI ATAS -->
+    <header class="bg-orange-500 text-white p-4 shadow-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-3xl">🏀</span>
+                <span class="text-xl md:text-2xl font-bold font-heading tracking-wide">Basket Ceria PJOK</span>
+            </div>
+            <!-- Tombol Aksesibilitas (Audio / Ukuran Teks / Kontras) -->
+            <div class="flex space-x-2">
+                <button id="btnTextSize" onclick="toggleTextSize()" class="bg-orange-600 hover:bg-orange-700 text-white p-2 px-3 rounded-full font-bold text-sm btn-large flex items-center justify-center border-2 border-white" title="Perbesar Teks" aria-label="Perbesar Teks">
+                    A+
+                </button>
+                <button id="btnAudio" onclick="toggleAudioHelp()" class="bg-orange-600 hover:bg-orange-700 text-white p-2 px-3 rounded-full font-bold text-sm btn-large flex items-center justify-center border-2 border-white" title="Bantuan Suara" aria-label="Bantuan Suara">
+                    🔊
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- KONTEN UTAMA (CONTAINER INTERAKTIF) -->
+    <main class="max-w-4xl mx-auto p-4 w-full flex-grow">
+
+        <!-- ================= 1. HALAMAN PEMBUKA ================= -->
+        <section id="secHalamanAwal" class="bg-white rounded-3xl p-6 md:p-10 card-shadow text-center border-4 border-orange-300">
+            <div class="mb-6">
+                <span class="inline-block bg-orange-100 text-orange-800 font-bold px-4 py-2 rounded-full text-lg md:text-xl border-2 border-orange-400">
+                    PJOK SLB - Fase D
+                </span>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-orange-600 mb-4 font-heading leading-tight">
+                Mengenal Gerak Manipulatif Bola Basket 🏀
+            </h1>
+            <p class="text-lg md:text-2xl text-slate-600 mb-8 max-w-2xl mx-auto font-medium">
+                Belajar melempar, menangkap, dan memantulkan bola basket dengan cara yang seru dan mudah!
+            </p>
+
+            <div class="my-8 flex justify-center">
+                <!-- Ilustrasi Karakter Utama -->
+                <div class="relative w-48 h-48 md:w-64 md:h-64 bg-amber-100 rounded-full flex items-center justify-center border-4 border-orange-400 shadow-inner">
+                    <svg class="w-36 h-36 md:w-48 md:h-48 text-orange-500 animate-bounce" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <button onclick="pindahHalaman('secMateri')" class="btn-large bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-2xl px-10 py-5 rounded-full shadow-lg border-b-4 border-emerald-700 w-full sm:w-auto transform hover:-translate-y-1">
+                🚀 MULAI BELAJAR
+            </button>
+        </section>
+
+        <!-- ================= 2. HALAMAN MATERI ================= -->
+        <section id="secMateri" class="hidden space-y-6">
+            <!-- Navigasi Tab Materi -->
+            <div class="bg-white p-3 rounded-2xl card-shadow border-2 border-orange-200 flex flex-wrap gap-2 justify-center">
+                <button onclick="tabMateri('materi1')" id="tab1" class="btn-large bg-orange-500 text-white font-bold py-3 px-5 rounded-xl flex-1 text-base md:text-lg">
+                    1. Pengenalan
+                </button>
+                <button onclick="tabMateri('materi2')" id="tab2" class="btn-large bg-slate-200 text-slate-700 font-bold py-3 px-5 rounded-xl flex-1 text-base md:text-lg">
+                    2. Melempar 👐
+                </button>
+                <button onclick="tabMateri('materi3')" id="tab3" class="btn-large bg-slate-200 text-slate-700 font-bold py-3 px-5 rounded-xl flex-1 text-base md:text-lg">
+                    3. Menangkap 🤲
+                </button>
+                <button onclick="tabMateri('materi4')" id="tab4" class="btn-large bg-slate-200 text-slate-700 font-bold py-3 px-5 rounded-xl flex-1 text-base md:text-lg">
+                    4. Memantulkan 🏀
+                </button>
+            </div>
+
+            <!-- Isi TAB 1: Pengenalan -->
+            <div id="materi1" class="bg-white rounded-3xl p-6 md:p-8 card-shadow border-4 border-orange-200">
+                <h2 class="text-2xl md:text-3xl font-bold text-orange-600 mb-4 font-heading border-b-2 border-orange-100 pb-2">
+                    Apa itu Gerak Manipulatif?
+                </h2>
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <div class="w-full md:w-1/2">
+                        <p class="text-xl md:text-2xl text-slate-700 leading-relaxed font-semibold mb-4">
+                            Gerak manipulatif adalah gerakan anggota tubuh kita yang memakai <span class="text-orange-600 underline decoration-wavy">BENDA</span> atau alat.
+                        </p>
+                        <div class="bg-orange-50 p-4 rounded-2xl border-2 border-orange-200">
+                            <p class="text-lg md:text-xl text-orange-800 font-bold">
+                                Contoh benda dalam permainan ini adalah: <br><span class="text-3xl">🏀 BOLA BASKET</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex justify-center">
+                        <div class="bg-amber-100 p-6 rounded-2xl text-center border-2 border-amber-300 w-full">
+                            <svg class="w-32 h-32 mx-auto text-orange-500 mb-2" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="10" stroke="black" stroke-width="1.5" fill="#f97316"/>
+                                <path d="M12 2a10 10 0 0 1 0 20M2 12h20" stroke="white" stroke-width="1.5"/>
+                            </svg>
+                            <span class="text-lg font-bold text-slate-700">Bola Basket Ringan & Membal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Isi TAB 2: Melempar -->
+            <div id="materi2" class="hidden bg-white rounded-3xl p-6 md:p-8 card-shadow border-4 border-orange-200">
+                <h2 class="text-2xl md:text-3xl font-bold text-blue-600 mb-4 font-heading border-b-2 border-blue-100 pb-2">
+                    1. Gerakan Melempar Bola (Passing) 👐
+                </h2>
+                <p class="text-xl text-slate-700 font-medium mb-4">
+                    Melempar bola artinya mendorong bola menjauh dari tubuh kita ke arah teman atau target.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                    <div class="bg-blue-50 p-5 rounded-2xl border-2 border-blue-200 text-center">
+                        <span class="text-4xl block mb-2">🤲➡️</span>
+                        <h3 class="text-xl font-bold text-blue-800 mb-2">Lemparan Dada (Chest Pass)</h3>
+                        <p class="text-slate-600 text-lg">Pegang bola di depan dada, lalu dorong bola lurus ke depan.</p>
+                    </div>
+                    <div class="bg-blue-50 p-5 rounded-2xl border-2 border-blue-200 text-center">
+                        <span class="text-4xl block mb-2">🏀👇</span>
+                        <h3 class="text-xl font-bold text-blue-800 mb-2">Lemparan Memantul (Bounce Pass)</h3>
+                        <p class="text-slate-600 text-lg">Dorong bola ke arah lantai hingga memantul ke teman.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Isi TAB 3: Menangkap -->
+            <div id="materi3" class="hidden bg-white rounded-3xl p-6 md:p-8 card-shadow border-4 border-orange-200">
+                <h2 class="text-2xl md:text-3xl font-bold text-emerald-600 mb-4 font-heading border-b-2 border-emerald-100 pb-2">
+                    2. Gerakan Menangkap Bola (Catching) 🤲
+                </h2>
+                <p class="text-xl text-slate-700 font-medium mb-4">
+                    Menangkap bola artinya menerima bola yang datang dari teman atau lemparan sendiri.
+                </p>
+
+                <div class="bg-emerald-50 p-6 rounded-2xl border-2 border-emerald-200">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-3">Langkah Mudah Menangkap Bola:</h3>
+                    <ol class="space-y-3 text-lg md:text-xl text-slate-700 font-semibold">
+                        <li class="flex items-center gap-3">
+                            <span class="bg-emerald-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold">1</span>
+                            Buka kedua telapak tangan membentuk seperti mangkuk.
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="bg-emerald-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold">2</span>
+                            Pandangan mata selalu melihat ke arah bola.
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="bg-emerald-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold">3</span>
+                            Pegang bola dengan erat di depan dada saat bola sampai.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Isi TAB 4: Memantulkan/Menggiring -->
+            <div id="materi4" class="hidden bg-white rounded-3xl p-6 md:p-8 card-shadow border-4 border-orange-200">
+                <h2 class="text-2xl md:text-3xl font-bold text-purple-600 mb-4 font-heading border-b-2 border-purple-100 pb-2">
+                    3. Memantulkan / Menggiring Bola (Dribbling) 🏀
+                </h2>
+                <p class="text-xl text-slate-700 font-medium mb-4">
+                    Menggiring adalah memantul-mantulkan bola ke lantai menggunakan satu tangan.
+                </p>
+
+                <div class="bg-purple-50 p-6 rounded-2xl border-2 border-purple-200 space-y-3">
+                    <div class="flex items-center gap-4">
+                        <span class="text-4xl">🖐️</span>
+                        <p class="text-lg md:text-xl text-purple-900 font-bold">Gunakan jari-jari tangan untuk menekan bola, JANGAN dipukul!</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-4xl">🧘</span>
+                        <p class="text-lg md:text-xl text-purple-900 font-bold">Bungkukkan sedikit badan agar bola mudah dikontrol.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigasi Bawah Materi -->
+            <div class="flex justify-between items-center pt-4">
+                <button onclick="pindahHalaman('secHalamanAwal')" class="btn-large bg-slate-400 hover:bg-slate-500 text-white font-bold px-6 py-3 rounded-2xl flex items-center gap-2">
+                    ⬅️ Kembali
+                </button>
+                <button onclick="pindahHalaman('secDemonstrasi')" class="btn-large bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-3 rounded-2xl flex items-center gap-2 shadow-lg">
+                    Lanjut Demonstrasi ➡️
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= 3. HALAMAN DEMONSTRASI LANGKAH ================= -->
+        <section id="secDemonstrasi" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 md:p-8 card-shadow border-4 border-emerald-300 text-center">
+                <span class="bg-emerald-100 text-emerald-800 font-bold px-4 py-2 rounded-full text-lg">
+                    Demonstrasi Langkah Gerak
+                </span>
+                <h2 id="demoJudul" class="text-2xl md:text-4xl font-extrabold text-emerald-600 my-4 font-heading">
+                    Langkah 1: Sikap Awal Pegang Bola
+                </h2>
+
+                <div class="my-6 bg-emerald-50 p-6 rounded-2xl border-2 border-emerald-200 max-w-lg mx-auto min-h-[220px] flex flex-col justify-center items-center">
+                    <div id="demoVisual" class="text-7xl mb-4">🧍‍♂️🏀</div>
+                    <p id="demoTeks" class="text-xl md:text-2xl text-slate-800 font-semibold leading-relaxed">
+                        Berdiri tegak, buka kaki selebar bahu, dan pegang bola erat-erat dengan kedua tangan di depan dada.
+                    </p>
+                </div>
+
+                <!-- Kontrol Langkah Demonstrasi -->
+                <div class="flex justify-center items-center gap-4">
+                    <button id="btnDemoPrev" onclick="gantiStepDemo(-1)" class="btn-large bg-slate-300 text-slate-700 font-bold px-5 py-3 rounded-xl disabled:opacity-50">
+                        ⬅️ Langkah Sebelumnya
+                    </button>
+                    <span id="demoStepIndicator" class="text-lg font-bold text-slate-600">1 / 3</span>
+                    <button id="btnDemoNext" onclick="gantiStepDemo(1)" class="btn-large bg-emerald-500 text-white font-bold px-5 py-3 rounded-xl">
+                        Langkah Berikutnya ➡️
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center">
+                <button onclick="pindahHalaman('secMateri')" class="btn-large bg-slate-400 hover:bg-slate-500 text-white font-bold px-6 py-3 rounded-2xl">
+                    ⬅️ Ke Materi
+                </button>
+                <button onclick="pindahHalaman('secPraktik')" class="btn-large bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-2xl shadow-lg">
+                    Ke Praktik Gerak 🤸
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= 4. HALAMAN PRAKTIK GERAK SENDIRI ================= -->
+        <section id="secPraktik" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 md:p-8 card-shadow border-4 border-amber-300">
+                <div class="text-center mb-6">
+                    <span class="bg-amber-100 text-amber-800 font-bold px-4 py-2 rounded-full text-lg">
+                        Aktivitas Praktik Mandiri / Pendampingan
+                    </span>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-amber-700 mt-2 font-heading">
+                        Ayo Lakukan Gerakan Ini Bersama Guru!
+                    </h2>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Kartu Praktik 1 -->
+                    <div class="flex items-center p-4 bg-amber-50 rounded-2xl border-2 border-amber-200">
+                        <input type="checkbox" id="p1" class="w-8 h-8 text-orange-600 rounded mr-4 cursor-pointer">
+                        <label for="p1" class="text-lg md:text-xl font-bold text-slate-800 cursor-pointer">
+                            1. Lempar bola basket ke dinding/teman sebanyak 5 kali. 👐
+                        </label>
+                    </div>
+
+                    <!-- Kartu Praktik 2 -->
+                    <div class="flex items-center p-4 bg-amber-50 rounded-2xl border-2 border-amber-200">
+                        <input type="checkbox" id="p2" class="w-8 h-8 text-orange-600 rounded mr-4 cursor-pointer">
+                        <label for="p2" class="text-lg md:text-xl font-bold text-slate-800 cursor-pointer">
+                            2. Tangkap bola yang dilempar guru dengan dua tangan. 🤲
+                        </label>
+                    </div>
+
+                    <!-- Kartu Praktik 3 -->
+                    <div class="flex items-center p-4 bg-amber-50 rounded-2xl border-2 border-amber-200">
+                        <input type="checkbox" id="p3" class="w-8 h-8 text-orange-600 rounded mr-4 cursor-pointer">
+                        <label for="p3" class="text-lg md:text-xl font-bold text-slate-800 cursor-pointer">
+                            3. Memantulkan bola di tempat sebanyak 10 kali. 🏀
+                        </label>
+                    </div>
+                </div>
+
+                <div id="praktikPesan" class="hidden mt-6 bg-emerald-100 border-2 border-emerald-400 p-4 rounded-2xl text-center">
+                    <p class="text-xl font-extrabold text-emerald-800">
+                        🎉 Hore! Kamu Hebat Sekali Sudah Mempraktikkan Semua Gerakan!
+                    </p>
+                </div>
+
+                <div class="mt-6 text-center">
+                    <button onclick="cekPraktikSelesai()" class="btn-large bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-xl px-8 py-4 rounded-2xl shadow-md">
+                        Selesai Praktik 👍
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center">
+                <button onclick="pindahHalaman('secDemonstrasi')" class="btn-large bg-slate-400 hover:bg-slate-500 text-white font-bold px-6 py-3 rounded-2xl">
+                    ⬅️ Kembali
+                </button>
+                <button onclick="pindahHalaman('secKuis')" class="btn-large bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-2xl shadow-lg">
+                    Ayo Mulai Kuis! ✏️
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= 5. HALAMAN KUIS / LATIHAN INTERAKTIF ================= -->
+        <section id="secKuis" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 md:p-8 card-shadow border-4 border-blue-300">
+                <div class="flex justify-between items-center mb-6 border-b-2 border-blue-100 pb-3">
+                    <span class="text-lg md:text-xl font-extrabold text-blue-600" id="kuisNomor">
+                        Pertanyaan 1 dari 5
+                    </span>
+                    <span class="bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-full text-md" id="kuisSkorSaatIni">
+                        Skor: 0
+                    </span>
+                </div>
+
+                <!-- Soal & Gambar -->
+                <div id="kuisContainer" class="space-y-6">
+                    <div class="text-center">
+                        <span id="kuisIcon" class="text-6xl mb-3 block">🏀</span>
+                        <h3 id="kuisPertanyaan" class="text-2xl md:text-3xl font-bold text-slate-800 leading-snug">
+                            Loading pertanyaan...
+                        </h3>
+                    </div>
+
+                    <!-- Pilihan Jawaban -->
+                    <div id="kuisPilihan" class="grid grid-cols-1 gap-4">
+                        <!-- Tombol pilihan dibuat secara dinamis JS -->
+                    </div>
+                </div>
+
+                <!-- Umpan Balik Kuis -->
+                <div id="kuisUmpanBalik" class="hidden mt-6 p-4 rounded-2xl text-center text-xl font-extrabold border-2">
+                </div>
+
+                <!-- Tombol Lanjut Kuis -->
+                <div class="mt-6 text-right">
+                    <button id="btnKuisLanjut" onclick="lanjutSoalKuis()" class="hidden btn-large bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 rounded-2xl shadow-md">
+                        Soal Berikutnya ➡️
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 6. HALAMAN HASIL KUIS ================= -->
+        <section id="secHasilKuis" class="hidden text-center space-y-6">
+            <div class="bg-white rounded-3xl p-8 card-shadow border-4 border-emerald-400">
+                <span class="text-7xl block mb-4" id="hasilEmoji">🏆</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 font-heading mb-2">
+                    Hasil Latihan Kamu
+                </h2>
+                <p class="text-xl text-slate-600 font-semibold mb-6">
+                    Bagus sekali sudah menyelesaikan latihan!
+                </p>
+
+                <div class="bg-emerald-50 border-2 border-emerald-300 p-6 rounded-2xl max-w-sm mx-auto mb-6">
+                    <span class="text-lg text-emerald-800 font-bold block">Nilai Kamu:</span>
+                    <span id="hasilSkorTeks" class="text-6xl font-black text-emerald-600">100</span>
+                </div>
+
+                <p id="hasilPesanApresiasi" class="text-2xl font-bold text-orange-600 mb-8">
+                    Hebat! Kamu Anak Pintar dan Rajin! 🌟
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button onclick="ulangKuis()" class="btn-large bg-blue-500 hover:bg-blue-600 text-white font-bold px-8 py-4 rounded-2xl shadow-md text-lg">
+                        🔄 Ulangi Latihan
+                    </button>
+                    <button onclick="pindahHalaman('secRefleksi')" class="btn-large bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-4 rounded-2xl shadow-md text-lg">
+                        Ke Refleksi Diri 🌟
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 7. HALAMAN REFLEKSI DIRI ================= -->
+        <section id="secRefleksi" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 md:p-8 card-shadow border-4 border-purple-300 text-center">
+                <span class="bg-purple-100 text-purple-800 font-bold px-4 py-2 rounded-full text-lg">
+                    Refleksi Peserta Didik
+                </span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-purple-700 mt-3 font-heading">
+                    Bagaimana Perasaanmu Hari Ini?
+                </h2>
+                <p class="text-lg text-slate-600 font-medium mb-6">Pilih emotikon yang sesuai dengan perasaanmu setelah belajar:</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                    <button onclick="pilihRefleksi('Senang')" class="btn-large p-6 bg-purple-50 hover:bg-purple-100 border-2 border-purple-300 rounded-2xl text-center focus:ring-4 focus:ring-purple-300">
+                        <span class="text-6xl block mb-2">😃</span>
+                        <span class="text-xl font-bold text-purple-900">Sangat Senang</span>
+                    </button>
+                    <button onclick="pilihRefleksi('Bisa')" class="btn-large p-6 bg-purple-50 hover:bg-purple-100 border-2 border-purple-300 rounded-2xl text-center focus:ring-4 focus:ring-purple-300">
+                        <span class="text-6xl block mb-2">👍</span>
+                        <span class="text-xl font-bold text-purple-900">Bisa Melakukan</span>
+                    </button>
+                    <button onclick="pilihRefleksi('ButuhBantuan')" class="btn-large p-6 bg-purple-50 hover:bg-purple-100 border-2 border-purple-300 rounded-2xl text-center focus:ring-4 focus:ring-purple-300">
+                        <span class="text-6xl block mb-2">🤝</span>
+                        <span class="text-xl font-bold text-purple-900">Butuh Bantuan</span>
+                    </button>
+                </div>
+
+                <div id="refleksiRespon" class="hidden bg-purple-100 border-2 border-purple-400 p-4 rounded-2xl text-xl font-bold text-purple-900 mb-6">
+                </div>
+
+                <button onclick="pindahHalaman('secHalamanAwal')" class="btn-large bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-2xl text-xl shadow-lg">
+                    🏠 Kembali ke Halaman Utama
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER / HAK CIPTA -->
+    <footer class="bg-slate-800 text-white text-center p-4 mt-8">
+        <p class="text-sm md:text-base font-medium">
+            Media Pembelajaran PJOK SLB Fase D - Gerak Manipulatif Bola Basket © 2026
+        </p>
+    </footer>
+
+    <!-- SCRIPT JAVASCRIPT KONTROL MEDIA -->
+    <script>
+        // --- DATA SOAL KUIS (5 PERTANYAAN SEDERHANA & VISUAL) ---
+        const dataKuis = [
+            {
+                pertanyaan: "Benda apa yang digunakan dalam permainan bola basket?",
+                icon: "🏀",
+                pilihan: [
+                    { teks: "Bola Basket 🏀", benar: true },
+                    { teks: "Batu Besar 🪨", benar: false },
+                    { teks: "Buku Tulis 📚", benar: false }
+                ]
+            },
+            {
+                pertanyaan: "Bagaimana cara melempar bola ke dada teman?",
+                icon: "👐",
+                pilihan: [
+                    { teks: "Mendorong bola dari depan dada 🤲", benar: true },
+                    { teks: "Menendang bola pakai kaki 🦶", benar: false },
+                    { teks: "Dilemparkan ke belakang 🙈", benar: false }
+                ]
+            },
+            {
+                pertanyaan: "Saat menangkap bola, mata kita harus melihat ke arah mana?",
+                icon: "👀",
+                pilihan: [
+                    { teks: "Melihat ke arah bola ⚽🏀", benar: true },
+                    { teks: "Melihat ke atas langit ☁️", benar: false },
+                    { teks: "Memejamkan mata 🙈", benar: false }
+                ]
+            },
+            {
+                pertanyaan: "Memantulkan bola ke lantai menggunakan...",
+                icon: "🖐️",
+                pilihan: [
+                    { teks: "Tangan / Jari-jari 🖐️", benar: true },
+                    { teks: "Kepala 🗣️", benar: false },
+                    { teks: "Siku 🦾", benar: false }
+                ]
+            },
+            {
+                pertanyaan: "Ketika memantulkan bola, sebaiknya bola dipukul atau ditekan?",
+                icon: "🏀",
+                pilihan: [
+                    { teks: "Ditekan dengan lembut memakai jari 🖐️", benar: true },
+                    { teks: "Dipukul keras-keras 👊", benar: false },
+                    { teks: "Dibiarkan saja 😴", benar: false }
+                ]
+            }
+        ];
+
+        // --- DATA DEMONSTRASI LANGKAH ---
+        const dataDemo = [
+            {
+                judul: "Langkah 1: Sikap Awal Pegang Bola",
+                 visual: "🧍‍♂️🏀",
+                teks: "Berdiri tegak, buka kaki selebar bahu, dan pegang bola erat-erat dengan kedua tangan di depan dada."
+            },
+            {
+                judul: "Langkah 2: Dorong Bola ke Depan",
+                visual: "👐➡️🏀",
+                teks: "Luruskan kedua tangan ke depan dan dorong bola menuju arah teman atau target."
+            },
+            {
+                judul: "Langkah 3: Menangkap Bola",
+                visual: "🤲🏀",
+                teks: "Buka kedua telapak tangan, siap menerima bola, lalu tarik ke depan dada saat bola sampai."
+            }
+        ];
+
+        // --- STATE APLIKASI ---
+        let indeksKuis = 0;
+        let skorKuis = 0;
+        let indeksDemo = 0;
+        let audioFiturAktif = false;
+        let textSizeState = 0; // 0: Normal, 1: Besar
+
+        // --- FUNGSI NAVIGASI HALAMAN ---
+        function pindahHalaman(idHalaman) {
+            const semuaHalaman = ['secHalamanAwal', 'secMateri', 'secDemonstrasi', 'secPraktik', 'secKuis', 'secHasilKuis', 'secRefleksi'];
+            semuaHalaman.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.add('hidden');
+            });
+
+            const targetEl = document.getElementById(idHalaman);
+            if (targetEl) {
+                targetEl.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Inisialisasi Kuis jika masuk ke secKuis
+            if (idHalaman === 'secKuis') {
+                muatSoalKuis();
+            }
+        }
+
+        // --- FUNGSI TAB MATERI ---
+        function tabMateri(idMateri) {
+            const listMateri = ['materi1', 'materi2', 'materi3', 'materi4'];
+            const listTab = ['tab1', 'tab2', 'tab3', 'tab4'];
+
+            listMateri.forEach((id, index) => {
+                const elMateri = document.getElementById(id);
+                const elTab = document.getElementById(listTab[index]);
+
+                if (id === idMateri) {
+                    elMateri.classList.remove('hidden');
+                    elTab.classList.remove('bg-slate-200', 'text-slate-700');
+                    elTab.classList.add('bg-orange-500', 'text-white');
+                } else {
+                    elMateri.classList.add('hidden');
+                    elTab.classList.remove('bg-orange-500', 'text-white');
+                    elTab.classList.add('bg-slate-200', 'text-slate-700');
+                }
+            });
+        }
+
+        // --- FUNGSI DEMONSTRASI STEPS ---
+        function gantiStepDemo(arah) {
+            indeksDemo += arah;
+            if (indeksDemo < 0) indeksDemo = 0;
+            if (indeksDemo >= dataDemo.length) indeksDemo = dataDemo.length - 1;
+
+            document.getElementById('demoJudul').innerText = dataDemo[indeksDemo].judul;
+            document.getElementById('demoVisual').innerText = dataDemo[indeksDemo].visual;
+            document.getElementById('demoTeks').innerText = dataDemo[indeksDemo].teks;
+            document.getElementById('demoStepIndicator').innerText = `${indeksDemo + 1} / ${dataDemo.length}`;
+
+            // State Tombol
+            document.getElementById('btnDemoPrev').disabled = (indeksDemo === 0);
+            document.getElementById('btnDemoNext').disabled = (indeksDemo === dataDemo.length - 1);
+
+            if (audioFiturAktif) {
+                bacakanTeks(dataDemo[indeksDemo].teks);
+            }
+        }
+
+        // --- FUNGSI PRAKTIK ---
+        function cekPraktikSelesai() {
+            const p1 = document.getElementById('p1').checked;
+            const p2 = document.getElementById('p2').checked;
+            const p3 = document.getElementById('p3').checked;
+
+            const pesan = document.getElementById('praktikPesan');
+            pesan.classList.remove('hidden');
+
+            if (p1 && p2 && p3) {
+                pesan.innerHTML = "<p class='text-xl font-extrabold text-emerald-800'>🎉 Luar Biasa! Kamu Telah Menyelesaikan Semua Gerakan!</p>";
+            } else {
+                pesan.innerHTML = "<p class='text-xl font-extrabold text-amber-800'>👍 Bagus! Lanjutkan Praktik Sampai Semua Dicentang Ya!</p>";
+            }
+
+            if (audioFiturAktif) {
+                bacakanTeks("Bagus sekali! Lanjutkan praktikmu bersama guru.");
+            }
+        }
+
+        // --- FUNGSI LOGIKA KUIS ---
+        function muatSoalKuis() {
+            const soal = dataKuis[indeksKuis];
+            document.getElementById('kuisNomor').innerText = `Pertanyaan ${indeksKuis + 1} dari ${dataKuis.length}`;
+            document.getElementById('kuisSkorSaatIni').innerText = `Skor: ${skorKuis}`;
+            document.getElementById('kuisIcon').innerText = soal.icon;
+            document.getElementById('kuisPertanyaan').innerText = soal.pertanyaan;
+
+            const containerPilihan = document.getElementById('kuisPilihan');
+            containerPilihan.innerHTML = '';
+
+            document.getElementById('kuisUmpanBalik').classList.add('hidden');
+            document.getElementById('btnKuisLanjut').classList.add('hidden');
+
+            soal.pilihan.forEach((pilihan) => {
+                const btn = document.createElement('button');
+                btn.className = "btn-large w-full text-left p-5 bg-slate-100 hover:bg-orange-100 border-2 border-slate-300 rounded-2xl font-bold text-xl md:text-2xl text-slate-800 transition";
+                btn.innerText = pilihan.teks;
+                btn.onclick = () => pilihJawaban(pilihan.benar, btn);
+                containerPilihan.appendChild(btn);
+            });
+
+            if (audioFiturAktif) {
+                bacakanTeks(soal.pertanyaan);
+            }
+        }
+
+        function pilihJawaban(isBenar, btnElement) {
+            // Disable semua tombol pilihan
+            const semuaBtn = document.getElementById('kuisPilihan').getElementsByTagName('button');
+            for (let b of semuaBtn) {
+                b.disabled = true;
+                b.classList.add('opacity-70');
+            }
+
+            const umpanBalik = document.getElementById('kuisUmpanBalik');
+            umpanBalik.classList.remove('hidden');
+
+            if (isBenar) {
+                skorKuis += 20;
+                btnElement.classList.remove('bg-slate-100');
+                btnElement.classList.add('bg-emerald-200', 'border-emerald-500', 'text-emerald-900');
+                umpanBalik.className = "mt-6 p-4 rounded-2xl text-center text-2xl font-extrabold bg-emerald-100 text-emerald-800 border-2 border-emerald-400";
+                umpanBalik.innerText = "🎉 HEBAT! JAWABANMU BENAR!";
+                if (audioFiturAktif) bacakanTeks("Hebat! Jawabanmu benar!");
+            } else {
+                btnElement.classList.remove('bg-slate-100');
+                btnElement.classList.add('bg-red-200', 'border-red-500', 'text-red-900');
+                umpanBalik.className = "mt-6 p-4 rounded-2xl text-center text-2xl font-extrabold bg-amber-100 text-amber-800 border-2 border-amber-400";
+                umpanBalik.innerText = "💪 HAMPIR BENAR! AYO SEMANGAT COBA LAGI NANTI!";
+                if (audioFiturAktif) bacakanTeks("Hampir benar! Ayo semangat!");
+            }
+
+            document.getElementById('kuisSkorSaatIni').innerText = `Skor: ${skorKuis}`;
+            document.getElementById('btnKuisLanjut').classList.remove('hidden');
+        }
+
+        function lanjutSoalKuis() {
+            indeksKuis++;
+            if (indeksKuis < dataKuis.length) {
+                muatSoalKuis();
+            } else {
+                tampilkanHasilKuis();
+            }
+        }
+
+        function tampilkanHasilKuis() {
+            pindahHalaman('secHasilKuis');
+            document.getElementById('hasilSkorTeks').innerText = skorKuis;
+
+            const emoji = document.getElementById('hasilEmoji');
+            const pesan = document.getElementById('hasilPesanApresiasi');
+
+            if (skorKuis >= 80) {
+                emoji.innerText = "🏆";
+                pesan.innerText = "Luar Biasa! Kamu Menguasai Materi Basket Ini!";
+            } else {
+                emoji.innerText = "🌟";
+                pesan.innerText = "Bagus sekali! Terus Berlatih Bersama Guru Ya!";
+            }
+        }
+
+        function ulangKuis() {
+            indeksKuis = 0;
+            skorKuis = 0;
+            pindahHalaman('secKuis');
+        }
+
+        // --- FUNGSI REFLEKSI DIRI ---
+        function pilihRefleksi(pilihan) {
+            const respon = document.getElementById('refleksiRespon');
+            respon.classList.remove('hidden');
+
+            if (pilihan === 'Senang') {
+                respon.innerText = "❤️ Terima kasih! Guru senang kamu merasa gembira hari ini!";
+            } else if (pilihan === 'Bisa') {
+                respon.innerText = "⭐ Kamu hebat sudah berusaha mempraktikkan gerakan basket!";
+            } else {
+                respon.innerText = "🤗 Tidak apa-apa, Guru siap membantu kamu kapan saja!";
+            }
+
+            if (audioFiturAktif) {
+                bacakanTeks(respon.innerText);
+            }
+        }
+
+        // --- AKSESIBILITAS: DUKUNGAN SUARA (TEXT TO SPEECH) ---
+        function toggleAudioHelp() {
+            audioFiturAktif = !audioFiturAktif;
+            const btn = document.getElementById('btnAudio');
+
+            if (audioFiturAktif) {
+                btn.classList.add('bg-emerald-600');
+                btn.innerText = "🔊 Suara ON";
+                bacakanTeks("Bantuan suara diaktifkan.");
+            } else {
+                btn.classList.remove('bg-emerald-600');
+                btn.innerText = "🔊";
+                if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            }
+        }
+
+        function bacakanTeks(teks) {
+            if ('speechSynthesis' in window && audioFiturAktif) {
+                window.speechSynthesis.cancel(); // Hentikan ucapan sebelumnya
+                const utterance = new SpeechSynthesisUtterance(teks);
+                utterance.lang = 'id-ID';
+                utterance.rate = 0.85; // Kecepatan lebih pelan untuk ABK
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // --- AKSESIBILITAS: TOGGLE UKURAN TEKS ---
+        function toggleTextSize() {
+            const body = document.body;
+            if (textSizeState === 0) {
+                body.classList.add('text-xl');
+                textSizeState = 1;
+            } else {
+                body.classList.remove('text-xl');
+                textSizeState = 0;
+            }
+        }
+    </script>
+</body>
+</html>
